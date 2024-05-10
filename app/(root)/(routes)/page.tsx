@@ -11,16 +11,15 @@ const RootPage = () => {
   return (
     <div >
       <div className='text-green-500 text-3xl mb-5'>
-        Hello ai companion (Protected)
-      </div>
-
-      <div className='mb-4'>
-
+        <h1 className='mr-4'>
+          Hello ai companion (Protected)
+        </h1>
         <UserButton afterSignOutUrl='/' />
       </div>
 
-      <Link href='/sign-in' className='block mb-2 text-xl'>Go to <b className='text-red-500'>SIGN-IN</b> Page</Link><br />
-      <Link href='/sign-up' className='block mb-2 text-xl'>Go to <b className='text-red-500'>SIGN-UP</b> Page</Link>
+
+      {/* <Link href='/sign-in' className='block mb-2 text-xl'>Go to <b className='text-red-500'>SIGN-IN</b> Page</Link><br />
+      <Link href='/sign-up' className='block mb-2 text-xl'>Go to <b className='text-red-500'>SIGN-UP</b> Page</Link> */}
     </div>);
 };
 export default RootPage;
