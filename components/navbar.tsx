@@ -1,12 +1,15 @@
+"use client";
+
 import { cn } from '@/lib/utils';
 import { Poppins } from 'next/font/google';
 
 import Link from 'next/link';
+import { Sparkles } from 'lucide-react';
 import { UserButton } from '@clerk/nextjs';
-import { Menu, Sparkles } from 'lucide-react';
+
 import { Button } from '@/components/ui/button';
-import { ModeToggle } from '@/components/ui/mode-toggle';
 import MobileSidebar from '@/components/mobile-sidebar';
+import { ModeToggle } from '@/components/ui/mode-toggle';
 
 const font = Poppins({
   weight: '600',
@@ -35,7 +38,7 @@ const Navbar = () => {
         </Button>
 
         <ModeToggle />
-        <UserButton />
+        <UserButton afterSignOutUrl='/' />
       </div>
     </div>
   );

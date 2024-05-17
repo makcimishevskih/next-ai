@@ -1,22 +1,46 @@
-import SearchInput from '@/components/search-input';
-import Categories from '@/components/categories';
 import prismadb from '@/lib/prismadb';
 
+import Categories from '@/components/categories';
+import SearchInput from '@/components/search-input';
+import Companions from '@/components/companions';
 
-const RootPage = async () => {
+
+type RootPageProps = {
+  searchParams: {
+    name: string;
+    categoryId: string;
+  }
+}
+
+const RootPage = async ({ searchParams }: RootPageProps) => {
   const categories = await prismadb.category.findMany();
+
+  const companions = await prismadb.companion.findMany({
+    where: {
+      categoryId: searchParams.categoryId,
+      name: {
+        search: searchParams.name
+      }
+    },
+    orderBy: {
+      createdAt: 'desc'
+    },
+    include: {
+      _count: {
+        select: {
+          messages: true
+        }
+      }
+    }
+  });
+
+
 
   return (
     <div className='h-full p-4 space-y-2'>
-      <h1 className='mr-4'>
-        Root page (Protected)
-      </h1>
-
-      <Categories data={categories} />
-
       <SearchInput />
-
-
+      <Categories data={categories} />
+      <Companions data={companions} />
     </div>
   );
 };

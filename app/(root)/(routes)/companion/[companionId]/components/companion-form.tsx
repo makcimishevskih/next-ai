@@ -63,8 +63,7 @@ const CompanionForm = ({ initialData, categories }: CompanionFormProps) => {
       if (initialData) {
         message = 'UPDATE';
         // Update companion
-        // @ts-ignore-next-line
-        await axios(`/api/companion/${initialData.id}`, values);
+        await axios.patch(`/api/companion/${initialData.id}`, values);
       } else {
         message = 'CREATE';
         // Create Companiont
@@ -74,13 +73,17 @@ const CompanionForm = ({ initialData, categories }: CompanionFormProps) => {
       toast({
         title: `${message} COMPANION SUCCESS`,
       });
+
+      router.push('/');
+      router.refresh();
     } catch (err) {
       toast({
+        variant: "destructive",
         title: `${message} COMPANION FORM ERROR`,
-        description: `ERROR IS: ${err}`
+        description: `PROBLEM WITH REQUEST. ERROR IS: ${err}`
       });
     }
-    console.log(values)
+    console.log(values);
   }
 
   const isLoading = form.formState.isSubmitting;
@@ -129,12 +132,13 @@ const CompanionForm = ({ initialData, categories }: CompanionFormProps) => {
                   <FormMessage />
                 </FormItem>
               )} />
+
             <FormField
               name='description'
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Surname</FormLabel>
+                  <FormLabel>Description</FormLabel>
                   <Input
                     disabled={isLoading}
                     placeholder='CEO and Founder of Tesla, SpaceX, X-social...'

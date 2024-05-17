@@ -1,4 +1,5 @@
 import prismadb from '@/lib/prismadb';
+import { auth } from '@clerk/nextjs/server';
 import CompanionForm from './components/companion-form';
 
 type CompanionIdPageProps = {
@@ -9,17 +10,21 @@ type CompanionIdPageProps = {
 
 // TODO check subscription 
 const CompanionIdPage = async ({ params: { companionId } }: CompanionIdPageProps) => {
+  const { userId, redirectToSignIn } = auth();
+
+  if (!userId) {
+    redirectToSignIn();
+  }
+
   const companion = await prismadb.companion.findUnique({
     where: {
       id: companionId,
+      // @ts-ignore-next-line
+      userId
     },
-  })
+  });
 
   const categories = await prismadb.category.findMany();
-
-  console.log(companionId);
-
-  const isNew = companionId === 'new';
 
   return (
     <div>

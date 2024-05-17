@@ -33,7 +33,6 @@ const ImageUpload = ({ value, onChange, disabled = false }: ImageUploadProps) =>
       >
         <div className='relative p-20 border-4 border-dashed border-primary/10 rounded-lg hover:opacity-75 transition flex flex-col space-y-2 items-center justify-center'>
           <Image
-            // REFACTOR IF WILL BE NEEDED
             fill
             alt='Upload'
             priority={true}

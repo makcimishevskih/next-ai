@@ -4,7 +4,7 @@ const db = new PrismaClient();
 
 async function main() {
   try {
-    const a = await db.category.createMany({
+    await db.category.createMany({
       data: [
         {name: "Famous People"},
         {name: "Movies & TV"},
@@ -14,7 +14,6 @@ async function main() {
         {name: "Scientists"}
       ]
     });
-    console.log(a, 'count:' ,a.count)
   } catch(err) {
     console.error('Error seeding default categories', err);
   } finally {
