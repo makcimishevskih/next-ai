@@ -41,6 +41,7 @@
     "next-themes": "^0.3.0",
     "openai": "^4.47.1",
     "openai-edge": "^1.2.2",
+    "package-name": "^0.1.0",
     "query-string": "^9.0.0",
     "react": "^18",
     "react-dom": "^18",
