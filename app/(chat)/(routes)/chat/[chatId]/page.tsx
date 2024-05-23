@@ -13,8 +13,6 @@ type ChatIdPageProps = {
 const ChatIdPage = async ({ params }: ChatIdPageProps) => {
   const { userId, redirectToSignIn } = auth();
 
-  console.log(userId);
-
   if (!userId) {
     return redirectToSignIn();
   }
@@ -45,10 +43,8 @@ const ChatIdPage = async ({ params }: ChatIdPageProps) => {
   }
 
   return (
-    <div>
+    <div className='h-full'>
       <ChatClient companion={companion} />
-      Chat: {params.chatId}
-      userId: {userId}
     </div>
   );
 };

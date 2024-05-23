@@ -83,7 +83,7 @@ const CompanionForm = ({ initialData, categories }: CompanionFormProps) => {
         description: `PROBLEM WITH REQUEST. ERROR IS: ${err}`
       });
     }
-    console.log(values);
+    // console.log(values);
   }
 
   const isLoading = form.formState.isSubmitting;
