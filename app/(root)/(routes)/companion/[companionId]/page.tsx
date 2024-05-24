@@ -1,6 +1,7 @@
 import prismadb from '@/lib/prismadb';
 import { auth } from '@clerk/nextjs/server';
-import CompanionForm from './components/companion-form';
+// @ts-ignore-next-line
+import CompanionForm from '@/(root)/(routes)/companion/[companionId]/components/companion-form';
 
 type CompanionIdPageProps = {
   params: {
