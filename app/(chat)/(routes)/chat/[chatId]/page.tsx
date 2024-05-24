@@ -2,8 +2,7 @@ import { auth } from '@clerk/nextjs/server';
 
 import prismadb from '@/lib/prismadb';
 import { redirect } from 'next/navigation';
-// @ts-ignore-next-line
-import ChatClient from '@/(root)/(routes)/companion/[companionId]/components/chat-client';
+import ChatClient from './components/chat-client';
 
 type ChatIdPageProps = {
   params: {
